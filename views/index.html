@@ -7,60 +7,82 @@
     <title>Science Injury Watchlist Main Page</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/submit.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
-        <ul class="navbar navbar-nav">
-            <li class="active"><a href="/">Submit <span class="sr-only"></span></a></li>
-            <li><a href="/world">Map</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#">Science Injury Watchlist</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Submit <span class="sr-only"></span></a></li>
+                    <li><a href="/world">Map</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <div>
+    <div class="col-sm-12">
         <form action="" method="POST" class="form" role="form">
             <div class="form-group">
                 <legend>Insert Injury Here</legend>
             </div>
             <!--date-->
-            <div class="form-group"> <label for="input1/(\w+)/\u\1/g" class="col-sm-2 control-label">Date of Injury</label>
+            <div class="form-group row">
+                <label for="dateInput" class="col-sm-2 col-form-label">Date of Injury</label>
                 <div class="col-sm-10">
-                    <input type="date" name="" id="input1/(\w+)/\u\1/g" class="form-control" value="" required="required" title=""> </div>
+                    <input type="date" name="" id="dateInput" class="form-control" value="" required="required" title="">
+                </div>
             </div>
             <!--Injury/Disease/Illness -->
-            <div class="form-group"> <label for="input1/(\w+)/\u\1/g" class="col-sm-2 control-label">Illness/Injury/Disease</label>
+            <div class="form-group row"> <label for="injuryInput" class="col-sm-2 col-form-label">Illness or Injury</label>
                 <div class="col-sm-10">
-                    <select name="" id="input1/(\w+)/\u\1/g" class="form-control" required="required">
+                    <select name="" id="injuryInput" class="form-control" required="required">
                         <optgroup>Injury</optgroup>
                         <option value="">Broken Leg</option>
                         <option value="">Malaria</option>
                     </select> </div>
             </div>
             <!--Description (voluntary) -->
-            <div class="form-group"> <label for="textarea1/(\w+)/\u\1/g" class="col-sm-2 control-label">Description of events (optional)</label>
-                <div class="col-sm-10"> <textarea name="" id="textarea1/(\w+)/\u\1/g" class="form-control" rows="3" required="false"></textarea> </div>
+            <div class="form-group row"> <label for="descriptionInput" class="col-sm-2 control-label">Description of events (optional)</label>
+                <div class="col-sm-10">
+                    <textarea name="" id="descriptionInput" class="form-control" rows="3"></textarea> </div>
             </div>
             <!-- location -->
-            <div class="form-group"> <label for="input1/(\w+)/\u\1/g" class="col-sm-2 control-label">Geographic Location</label>
-                <div id="map" style="width:100%;height:500px" />
-            </div>
-            <script>
-                function myMap() {
-                    var mapCanvas = document.getElementById("map")
-                    var mapOptions = {
-                        center: new google.maps.LatLng(51.5, -0.2),
-                        zoom: 10
+
+            <div class="form-group row">
+                <label for="locationInput" class="col-sm-2 control-label">Geographic Location</label>
+                <div id="map" class="col-sm-10 form-control" style="width:100%;height:400px"></div>
+                <script>
+                    function myMap() {
+                        var mapCanvas = document.getElementById("map")
+                        var mapOptions = {
+                            center: new google.maps.LatLng(51.5, -0.2),
+                            zoom: 10
+                        }
+                        var map = new google.maps.Map(mapCanvas, mapOptions);
                     }
-                    var map = new google.maps.Map(mapCanvas, mapOptions);
-                }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-            <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2"> <button type="submit" class="btn btn-primary">Submit</button> </div>
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+                <div class="form-group row">
+                    <div class="col-sm-10"> <button type="submit" id="submit" class="btn btn-primary">Submit</button> </div>
+                </div>
             </div>
         </form>
     </div>
