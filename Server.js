@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 
-var db = require('./db');
+var db = require('./js/db');
 
 var router = express.Router();
 var path = __dirname + '/views/';
@@ -12,7 +12,7 @@ router.use(function(req, res, next) {
 });
 
 router.get("/", function(req, res) {
-    res.sendFile(path + "index.html");
+    res.sendFile(__dirname + "/index.html");
 });
 
 router.get("/about", function(req, res) {
@@ -27,6 +27,11 @@ app.use("/", router);
 
 app.use("*", function(req, res) {
     res.sendFile(path + "404.html");
+});
+
+app.post('/', function(req, res) {
+    Console.log(req.body);
+    res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(3000, function() {

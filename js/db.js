@@ -1,43 +1,15 @@
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request;
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'siwserver',
+    password: 'v0E6JICT8fjF'
+})
 
-var config = {
-    userName: 'siwserver',
-    password: '66fU7vpnkKii',
-    server: 'localhost',
-    database: 'ScienceInjuryWatchlist'
-}
+connection.connect()
 
-var connection = new Connection(config);
-connection.on('connect', function(err) {
-    if (err) {
-        console.log(err);
-    } else {
-        executeStatement();
-    }
-});
-
-function executeStatement() {
-    request = new Request("select 123, 'hello world'", function(err, rowCount) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(rowCount + 'rows');
-        }
-        connection.close();
-    });
-
-    request.on('row', function(columns) {
-        columns.forEach(function(column) {
-            if (column.value == null) {
-                console.log('NULL');
-            } else {
-                console.log(column.value);
-            }
-        });
-    });
-
-    connection.execSql(request);
-}
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+    if (err) throw err;
+    console.log('The solution is: ', rows[0].solution);
+})
 
 module.exports = connection;
