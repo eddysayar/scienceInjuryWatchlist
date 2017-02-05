@@ -1,10 +1,20 @@
-var express = require("express");
+var express = require("express"),
+    bodyParser = require('body-parser'),
+    db = require('./js/db');
+
 var app = express();
 
-var db = require('./js/db');
+app.listen(3000, function() {
+    console.log("Live at Port 3000");
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 var router = express.Router();
-var path = __dirname + '/views/';
+var path = __dirname + '/';
 
 router.use(function(req, res, next) {
     console.log("/" + req.method);
@@ -12,28 +22,29 @@ router.use(function(req, res, next) {
 });
 
 router.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(path + "index.html");
 });
 
 router.get("/about", function(req, res) {
-    res.sendFile(path + "about.html");
+    res.sendFile(path + "views/about.html");
 });
 
 router.get("/world", function(req, res) {
-    res.sendFile(path + "world.html")
-})
+    res.sendFile(path + "views/world.html");
+});
+
+router.get("/*", function(req, res) {
+    res.sendFile(path + "views/404.html");
+});
 
 app.use("/", router);
 
-app.use("*", function(req, res) {
-    res.sendFile(path + "404.html");
-});
-
-app.post('/', function(req, res) {
-    Console.log(req.body);
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.listen(3000, function() {
-    console.log("Live at Port 3000");
+app.post("/", function(req, res) {
+    //res.send("Hello world!");
+    var date = req.body.dateInput;
+    var injury = req.body.injuryInput;
+    var description = req.body.descriptionInput;
+    console.log(date + ", " + injury + ", " + description);
+    res.sendFile(path + "index.html");
+    //res.sendFile(__dirname + 'index.html');
 });

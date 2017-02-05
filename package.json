@@ -7,6 +7,8 @@
     "dependencies": {
         "express": "latest",
         "mysql": "latest",
-        "tedious": "latest"
+        "jquery": "latest",
+        "body-parser": "latest",
+        "bootstrap": "latest"
     }
 }
