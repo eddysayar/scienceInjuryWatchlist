@@ -44,7 +44,16 @@ app.post("/", function(req, res) {
     var date = req.body.dateInput;
     var injury = req.body.injuryInput;
     var description = req.body.descriptionInput;
+    var post = {
+        dateOfInjury: date,
+        nameOfInjury: injury,
+        description: description
+    };
+    var query = db.query("Insert INTO scienceinjurywatchlist.siwdata SET ? ", post, function(err, result) {
+        if (err) console.log(err);
+        else console.log(result);
+    });
     console.log(date + ", " + injury + ", " + description);
+    console.log(query.sql);
     res.sendFile(path + "index.html");
-    //res.sendFile(__dirname + 'index.html');
 });
