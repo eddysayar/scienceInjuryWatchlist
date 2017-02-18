@@ -44,10 +44,14 @@ app.post("/", function(req, res) {
     var date = req.body.dateInput;
     var injury = req.body.injuryInput;
     var description = req.body.descriptionInput;
+    var locationX = req.body.locationInputX;
+    var locationY = req.body.locationInputY;
     var post = {
         dateOfInjury: date,
         nameOfInjury: injury,
-        description: description
+        description: description,
+        geolocX: locationX,
+        geolocY: locationY
     };
     var query = db.query("Insert INTO scienceinjurywatchlist.siwdata SET ? ", post, function(err, result) {
         if (err) console.log(err);

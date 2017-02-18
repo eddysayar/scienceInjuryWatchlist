@@ -44,12 +44,19 @@
                 <div class="col-sm-6 form-group">
                     <label for="dateInput" class="col-form-label">Date of Injury</label>
                     <input type="date" name="dateInput" id="dateInput" class="form-control" value="" required="required" title="">
+                    <script>
+                        Date.prototype.toDateInputValue = (function() {
+                            var local = new Date(this);
+                            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                            return local.toJSON().slice(0, 10);
+                        });
+                        document.getElementById('dateInput').value = new Date().toDateInputValue();
+                    </script>
                 </div>
                 <!--Injury/Disease/Illness -->
                 <div class="col-sm-6 form-group">
                     <label for="injuryInput" class="col-form-label">Illness or Injury</label>
                     <select name="injuryInput" id="injuryInput" class="form-control" required="required">
-                        <optgroup value="Injury">Injury</optgroup>
                         <option value="Broken Leg">Broken Leg</option>
                         <option value="Malaria">Malaria</option>
                     </select>
@@ -63,18 +70,31 @@
             <!-- location -->
             <div class="form-group">
                 <label for="locationInput" class="control-label">Geographic Location</label>
-                <div id="locationInput" class="form-control" style="width:100%;height:400px"></div>
+                <div class="col-sm-12 form-group">
+                    <input type="text" id="locationInputX" name="locationInputX" class="col-sm-6">
+                    <input type="text" id="locationInputY" name="locationInputY" class="col-sm-6">
+                </div>
+                <div id="map" class="form-control" style="width:100%;height:400px"></div>
                 <script>
                     function initMap() {
-                        var pos = new google.maps.LatLng(51.5, -0.2);
-                        var mapCanvas = document.getElementById("locationInput")
+                        var pos = new google.maps.LatLng(51.2, -0.2);
+
+                        var locationInputX = document.getElementById("locationInputX");
+                        var locationInputY = document.getElementById("locationInputY");
+                        locationInputX.value = pos.lat();
+                        locationInputY.value = pos.lng();
+
+                        var mapCanvas = document.getElementById("map")
                         var mapOptions = {
                             center: pos,
                             zoom: 4
                         }
                         var map = new google.maps.Map(mapCanvas, mapOptions);
+                        var marker;
                         map.addListener('click', function(e) {
-                            placeMarkerAndPanTo(e.latLng, map);
+                            marker = placeMarkerAndPanTo(e.latLng, map);
+                            locationInputX.value = marker.getPosition().lat();
+                            locationInputY.value = marker.getPosition().lng();
                         });
                     }
 
@@ -84,6 +104,7 @@
                             map: map
                         });
                         map.panTo(latLng);
+                        return marker;
                     }
                 </script>
                 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwdXsMebn4wlGUuBy53zSYo9RGgDPuuBw&callback=initMap"></script>
