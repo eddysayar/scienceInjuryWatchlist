@@ -37,6 +37,18 @@ router.get("/*", function(req, res) {
     res.sendFile(path + "views/404.html");
 });
 
+app.get("/api/world", function(req, res) {
+    var select = req.query.select;
+    console.log("'select' is set to '" + req.query.select + "'");
+    var query = db.query("SELECT " + select + " FROM scienceinjurywatchlist.siwdata", function(err, result) {
+        if (err) res.sendStatus(500);
+        else {
+            console.log(result);
+            res.status(200).json(result);
+        }
+    })
+});
+
 app.use("/", router);
 
 app.post("/", function(req, res) {
