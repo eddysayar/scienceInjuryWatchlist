@@ -51,6 +51,18 @@ app.get("/api/world", function(req, res) {
 
 app.use("/", router);
 
+app.post("/about/#", function(req, res) {
+    var comment = req.body.commentInput;
+    var post = {
+        comment: comment
+    };
+    var query = db.query("Insert INTO scienceinjurywatchlist.commentData SET ? ", post, function(err, result) {
+        if (err) console.log(err);
+        else console.log(result);
+    });
+    res.sendFile(path + "index.html");
+});
+
 app.post("/", function(req, res) {
     //res.send("Hello world!");
     var date = req.body.dateInput;

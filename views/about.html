@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Science Injury Watchlist Main Page</title>
+    <title>Science Injury Tracker About</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -23,12 +23,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="/">Science Injury Watchlist</a>
+                <a class="navbar-brand" href="/">Science Injury Tracker - Alpha Version</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Submit</a></li>
-                    <li><a href="/world">Map</a></li>
+                    <li><a href="/world">World</a></li>
                     <li class="active"><a href="/about">About<span class="sr-only"></span></a></li>
                 </ul>
             </div>
@@ -38,8 +38,8 @@
     <div class="col-sm-12">
         <h1>About this site</h1>
         <p>
-            The Science Injury Watchlist is a database of user-submitted incident reports of injuries and difficulties faced by research scientists while undertaking field-based research. Inspired by a recent <a href="http://www.nature.com/nature/journal/v541/n7636/full/nj7636-247a.html"> article in Nature</a>,
-            the Watchlist is a vital resource for researchers in the design phase of their experimental studies, aggregating data on potential hazards within geographical areas of interest so as to ensure better preparedness for future researchers.
+            The Science Injury Tracker is a database of user-submitted incident reports of injuries and difficulties faced by research scientists while undertaking field-based research. Inspired by a recent <a href="http://www.nature.com/nature/journal/v541/n7636/full/nj7636-247a.html"> article in Nature</a>,
+            the Tracker is a vital resource for researchers in the design phase of their experimental studies, aggregating data on potential hazards within geographical areas of interest so as to ensure better preparedness for future researchers.
         </p>
 
     </div>
@@ -61,6 +61,18 @@
             Hadi Eddy Sayar is a Software Engineer at Microsoft and a graduate of McGill University's Software Engineering Program. As a STEM geek, he deeply respects the work that scientists do both in the field and in the lab. As such, he is always willing to work
             with them and develop on their behalf. Web: <a href="http://www.hadisayar.com">hadisayar.com</a>
         </p>
+    </div>
+    <div class="col-sm-12">
+        <h1>Comments</h1>
+        <form action="#">
+            <div class="col-sm-12 form-group">
+                <label for="commentInput" class="col-form-label">Any suggestions, changes or bugs? Please comment below.</label>
+                <textarea name="commentInput" id="commentInput" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-sm-12 form-group">
+                <button type="submit" class="btn btn-success btn-lg pull-right btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 
