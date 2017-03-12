@@ -1,15 +1,16 @@
 {
-  "name": "website-using-express",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "node Server.js"
-  },
-  "dependencies": {
-    "body-parser": "latest",
-    "bootstrap": "latest",
-    "express": "latest",
-    "jquery": "latest",
-    "mysql": "latest",
-    "node-mysql": "^0.4.2"
-  }
+    "name": "website-using-express",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node Server.js"
+    },
+    "dependencies": {
+        "body-parser": "latest",
+        "bootstrap": "latest",
+        "express": "latest",
+        "jquery": "latest",
+        "mysql": "latest",
+        "node-mysql": "^0.4.2",
+        "config": "latest"
+    }
 }
