@@ -2,10 +2,12 @@ var express = require("express"),
     bodyParser = require('body-parser'),
     db = require('./js/db');
 
+var config = require("config");
+var portNumber = config.get("Port.Number");
 var app = express();
 
-app.listen(80, function() {
-    console.log("Live at Port 80");
+app.listen(portNumber, function() {
+    console.log("Live at Port " + portNumber);
 });
 
 app.use(bodyParser.json());

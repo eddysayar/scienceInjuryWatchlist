@@ -1,10 +1,8 @@
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'siwserver',
-    password: 'v0E6JICT8fjF'
-})
+var config = require('config');
+var dbConfig = config.get("ScienceInjuryWatchlist.dbConfig");
 
+var connection = mysql.createConnection(dbConfig);
 connection.connect()
 
 connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {

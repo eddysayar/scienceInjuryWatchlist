@@ -1,0 +1,12 @@
+{
+    "ScienceInjuryWatchlist": {
+        "dbConfig": {
+            "host": "localhost",
+            "user": "siwserver",
+            "password": "v0E6JICT8fjF"
+        }
+    },
+    "Port": {
+        "Number": 3000
+    }
+}
