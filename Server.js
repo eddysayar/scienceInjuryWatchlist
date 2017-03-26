@@ -62,11 +62,12 @@ app.post("/about/", function(req, res) {
     var post = {
         comment: comment
     };
+    console.log("Inserting into table: " + commentDataTable + " comment: " + post.comment);
     var query = db.query("Insert INTO " + commentDataTable + " SET ? ", post, function(err, result) {
         if (err) console.log(err);
         else console.log(result);
     });
-    res.sendFile(path + "index.html");
+    res.sendFile(path + "about.html");
 });
 
 app.post("/", function(req, res) {
