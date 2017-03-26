@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({
 var router = express.Router();
 var path = __dirname + '/';
 
+app.use(express.static(__dirname + "/views/images"));
+
 router.use(function(req, res, next) {
     console.log("/" + req.method);
     next();
