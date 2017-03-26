@@ -5,6 +5,7 @@ var express = require("express"),
 var config = require("config");
 var portNumber = config.get("Port.Number");
 var siwdataTable = config.get("ScienceInjuryWatchlist.SiwData");
+var commentDataTable = config.get("ScienceInjuryWatchlist.CommentData");
 var app = express();
 
 app.listen(portNumber, function() {
@@ -56,12 +57,12 @@ app.get("/api/world", function(req, res) {
 
 app.use("/", router);
 
-app.post("/about/#", function(req, res) {
+app.post("/about/", function(req, res) {
     var comment = req.body.commentInput;
     var post = {
         comment: comment
     };
-    var query = db.query("Insert INTO scienceinjurywatchlist.commentData SET ? ", post, function(err, result) {
+    var query = db.query("Insert INTO " + commentDataTable + " SET ? ", post, function(err, result) {
         if (err) console.log(err);
         else console.log(result);
     });

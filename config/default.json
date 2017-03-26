@@ -5,7 +5,8 @@
             "user": "siwserver",
             "password": "v0E6JICT8fjF"
         },
-        "SiwData": "scienceInjuryWatchlist.SiwData"
+        "SiwData": "scienceInjuryWatchlist.SiwData",
+        "CommentData": "scienceInjuryWatchlist.commentData"
     },
     "Port": {
         "Number": 3000

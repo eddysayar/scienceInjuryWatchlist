@@ -7,7 +7,8 @@
             "socketPath": "/var/run/mysqld/mysqld.sock",
             "password": "B%P2AuV3zJ94"
         },
-        "SiwData": "siwdata"
+        "SiwData": "siwdata",
+        "CommentData": "commentData"
     },
     "Port": {
         "Number": 80
