@@ -4,6 +4,7 @@ var express = require("express"),
 
 var config = require("config");
 var portNumber = config.get("Port.Number");
+var siwdataTable = config.get("ScienceInjuryWatchlist.SiwData");
 var app = express();
 
 app.listen(portNumber, function() {
@@ -42,7 +43,7 @@ router.get("/*", function(req, res) {
 app.get("/api/world", function(req, res) {
     var select = req.query.select;
     console.log("'select' is set to '" + req.query.select + "'");
-    var query = db.query("SELECT " + select + " FROM scienceinjurywatchlist.siwdata", function(err, result) {
+    var query = db.query("SELECT " + select + " FROM " + siwdataTable, function(err, result) {
         if (err) res.sendStatus(500);
         else {
             console.log(result);
@@ -79,7 +80,7 @@ app.post("/", function(req, res) {
         geolocX: locationX,
         geolocY: locationY
     };
-    var query = db.query("Insert INTO scienceinjurywatchlist.siwdata SET ? ", post, function(err, result) {
+    var query = db.query("Insert INTO " + siwdataTable + " SET ? ", post, function(err, result) {
         if (err) console.log(err);
         else console.log(result);
     });
