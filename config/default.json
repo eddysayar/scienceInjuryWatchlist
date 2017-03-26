@@ -6,7 +6,7 @@
             "password": "v0E6JICT8fjF"
         },
         "SiwData": "scienceInjuryWatchlist.SiwData",
-        "CommentData": "scienceInjuryWatchlist.commentData"
+        "CommentData": "scienceInjuryWatchlist.commentdata"
     },
     "Port": {
         "Number": 3000
