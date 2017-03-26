@@ -67,7 +67,7 @@ app.post("/about/", function(req, res) {
         if (err) console.log(err);
         else console.log(result);
     });
-    res.sendFile(path + "about.html");
+    res.sendFile(path + "views/about.html");
 });
 
 app.post("/", function(req, res) {
